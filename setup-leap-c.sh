@@ -29,8 +29,8 @@ make install -j4
 
 cd ../
 
-conda env config vars --set ACADOS_SOURCE_DIR=$PWD LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/lib"
-conda deactivate tdmpc2
+conda env config vars set ACADOS_SOURCE_DIR=$PWD LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"$PWD/lib"
+conda deactivate
 conda activate tdmpc2
 
 cd ../../
