@@ -77,7 +77,7 @@ save_agent: true
 seed: 1
 
 # convenience
-device: cuda:0
+device: "cuda:0"
 work_dir: ???
 task_title: ???
 multitask: ???
