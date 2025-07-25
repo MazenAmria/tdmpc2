@@ -17,20 +17,23 @@ class LeapCWrapper(gym.Wrapper):
         self.max_episode_steps = int(self.env.max_time / self.env.dt)
 
     def reset(self):
-        return self.env.reset()
+        return self.env.reset()[0]
 
     def step(self, action):
-        return self.env.step(action)
+        obs, reward, terminated, truncated, info = self.env.step(action.copy())
+        done = terminated or truncated
+        info['terminated'] = terminated
+        return obs, reward, done, info
 
     @property
     def unwrapped(self):
         return self.env.unwrapped
 
-    def render(self, args, **kwargs):
-        return self.env.render(mode="rgb_array")
+    def render(self, **kwargs):
+        return self.env.render(**kwargs)
 
 
 def make_env(cfg):
-    env = create_env(cfg.task)
+    env = create_env(cfg.task, render_mode="rgb_array")
     env = LeapCWrapper(env, cfg)
     return env
