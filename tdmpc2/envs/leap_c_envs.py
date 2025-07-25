@@ -17,7 +17,7 @@ class LeapCWrapper(gym.Wrapper):
         self.max_episode_steps = int(self.env.max_time / self.env.dt)
 
     def reset(self):
-        return self.env.reset()[0]
+        return self.env.reset(options={ "mode": "train" })[0]
 
     def step(self, action):
         obs, reward, terminated, truncated, info = self.env.step(action.copy())
