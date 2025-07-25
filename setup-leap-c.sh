@@ -38,6 +38,6 @@ cd ../../
 echo "Installing leap-c dependencies..."
 pip install -e $ACADOS_SOURCE_DIR/interfaces/acados_template
 pip install torch
-pip install -e .
+pip install -e .[rendering]
 
 exit 0
