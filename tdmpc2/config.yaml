@@ -2,17 +2,17 @@ defaults:
     - override hydra/launcher: submitit_local
 
 # environment
-task: dog-run
+task: chain
 obs: state
-episodic: false
+episodic: true
 
 # evaluation
 checkpoint: ???
-eval_episodes: 10
-eval_freq: 50000
+eval_episodes: 20
+eval_freq: 10_000
 
 # training
-steps: 10_000_000
+steps: 1_000_000
 batch_size: 256
 reward_coef: 0.1
 value_coef: 0.1
@@ -52,7 +52,7 @@ vmin: -10
 vmax: +10
 
 # architecture
-model_size: ???
+model_size: 1
 num_enc_layers: 2
 enc_dim: 256
 num_channels: 32
