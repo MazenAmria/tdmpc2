@@ -2,17 +2,17 @@ defaults:
     - override hydra/launcher: submitit_local
 
 # environment
-task: ???
+task: dog-run
 obs: state
 episodic: false
 
 # evaluation
 checkpoint: ???
-eval_episodes: 20
-eval_freq: 10_000
+eval_episodes: 10
+eval_freq: 50000
 
 # training
-steps: 1_000_000
+steps: 10_000_000
 batch_size: 256
 reward_coef: 0.1
 value_coef: 0.1
