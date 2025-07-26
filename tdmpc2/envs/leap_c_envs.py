@@ -23,6 +23,10 @@ class LeapCWrapper(gym.Wrapper):
         obs, reward, terminated, truncated, info = self.env.step(action.copy())
         done = terminated or truncated
         info['terminated'] = terminated
+        if 'success' in info:
+            info['success'] = float(info['success'])
+        if 'violation' in info:
+            info['violation'] = float(info['violation'])
         return obs, reward, done, info
 
     @property
