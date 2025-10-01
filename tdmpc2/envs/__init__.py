@@ -29,7 +29,10 @@ try:
 	from envs.mujoco import make_env as make_mujoco_env
 except:
 	make_mujoco_env = missing_dependencies
-
+try:
+    from envs.leap_c_envs import make_env as make_leap_c_env
+except:
+    make_leap_c_env = missing_dependencies
 
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
@@ -65,7 +68,7 @@ def make_env(cfg):
 
 	else:
 		env = None
-		for fn in [make_dm_control_env, make_maniskill_env, make_metaworld_env, make_myosuite_env, make_mujoco_env]:
+		for fn in [make_dm_control_env, make_maniskill_env, make_metaworld_env, make_myosuite_env, make_mujoco_env, make_leap_c_env]:
 			try:
 				env = fn(cfg)
 			except ValueError:

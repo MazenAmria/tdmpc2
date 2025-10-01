@@ -1,0 +1,4 @@
+[submodule "tdmpc2/leap-c"]
+	path = tdmpc2/leap-c
+	url = git@github.com:MazenAmria/leap-c.git
+	branch = main
