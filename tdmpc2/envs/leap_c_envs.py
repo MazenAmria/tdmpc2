@@ -14,7 +14,12 @@ class LeapCWrapper(gym.Wrapper):
             high=np.full(self.env.action_space.shape, self.env.action_space.high.max()),
             dtype=self.env.action_space.dtype,
         )
-        self.max_episode_steps = int(self.env.max_time / self.env.dt)
+        if hasattr(self.env, "max_steps"):
+            self.max_episode_steps = self.env.max_steps
+        elif hasattr(self.env, "max_time") and hasattr(self.env, "dt"):
+            self.max_episode_steps = int(self.env.max_time / self.env.dt)
+        else:
+            raise ValueError("Environment does not have max_steps or max_time and dt defined.")
 
     def reset(self):
         return self.env.reset(options={ "mode": "train" })[0]
